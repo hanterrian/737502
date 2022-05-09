@@ -39,6 +39,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Book[] $favorites
  * @property-read int|null $favorites_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Book[] $viewed
+ * @property-read int|null $viewed_count
  */
 class User extends Authenticatable
 {
@@ -76,6 +78,11 @@ class User extends Authenticatable
 
     public function favorites(): BelongsToMany
     {
-        return $this->belongsToMany(Book::class);
+        return $this->belongsToMany(Book::class, 'book_user_favorite');
+    }
+
+    public function viewed(): BelongsToMany
+    {
+        return $this->belongsToMany(Book::class, 'book_user_viewer');
     }
 }

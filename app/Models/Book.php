@@ -40,6 +40,8 @@ use Illuminate\Support\Facades\Storage;
  * @property-read int|null $favorites_count
  * @property-read mixed $image_url
  * @property-read \App\Models\Publisher|null $publisher
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $viewers
+ * @property-read int|null $viewers_count
  */
 class Book extends Model
 {
@@ -59,7 +61,12 @@ class Book extends Model
 
     public function favorites(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'book_user_favorite');
+    }
+
+    public function viewers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'book_user_viewer');
     }
 
     public function getImageUrlAttribute()

@@ -14,11 +14,11 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('book_user_favorite', function (Blueprint $table) {
+        Schema::create('book_user_viewer', function (Blueprint $table) {
             $table->foreignIdFor(Book::class);
             $table->foreignIdFor(User::class);
 
-            $table->timestamps();
+            $table->integer('view')->default(0)->nullable(false);
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('book_user_favorite');
+        Schema::dropIfExists('book_user_viewer');
     }
 };
