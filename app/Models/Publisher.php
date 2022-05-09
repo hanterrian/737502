@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * App\Models\Publisher
@@ -25,8 +26,17 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Publisher whereSort($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Publisher whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Book[] $books
+ * @property-read int|null $books_count
  */
 class Publisher extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'published', 'sort'];
+
+    public function books(): HasMany
+    {
+        return $this->hasMany(Book::class);
+    }
 }

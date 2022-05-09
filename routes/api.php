@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResources([
+    'authors' => \App\Http\Controllers\Api\AuthorController::class,
+    'books' => \App\Http\Controllers\Api\BookController::class,
+    'publishers' => \App\Http\Controllers\Api\PublisherController::class,
+]);

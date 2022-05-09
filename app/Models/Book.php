@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * App\Models\Book
@@ -31,8 +34,40 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Book whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Book whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Author[] $authors
+ * @property-read int|null $authors_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\User[] $favorites
+ * @property-read int|null $favorites_count
+ * @property-read mixed $image_url
+ * @property-read \App\Models\Publisher|null $publisher
  */
 class Book extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['publisher_id', 'title', 'description', 'image', 'published', 'sort'];
+
+    public function publisher(): BelongsTo
+    {
+        return $this->belongsTo(Publisher::class);
+    }
+
+    public function authors(): BelongsToMany
+    {
+        return $this->belongsToMany(Author::class);
+    }
+
+    public function favorites(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function getImageUrlAttribute()
+    {
+        if ($this->image && Storage::disk('public')->exists("books/{$this->image}")) {
+            return Storage::disk('public')->url("books/{$this->image}");
+        }
+
+        return null;
+    }
 }
