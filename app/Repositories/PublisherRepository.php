@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Http\Requests\ApiPublisherStoreRequest;
+use App\Http\Requests\ApiPublisherUpdateRequest;
 use App\Models\Publisher;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -17,14 +19,14 @@ class PublisherRepository
         return Publisher::whereId($id)->first();
     }
 
-    public function create(array $params): Publisher
+    public function create(ApiPublisherStoreRequest $request): Publisher
     {
-        return Publisher::create($params);
+        return Publisher::create($request->toArray());
     }
 
-    public function update(int $id, array $params): bool
+    public function update(Publisher $author, ApiPublisherUpdateRequest $request): bool
     {
-        return Publisher::whereId($id)->update($params);
+        return $author->update($request->toArray());
     }
 
     public function delete(int $id): int

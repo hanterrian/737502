@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Http\Requests\ApiBookStoreRequest;
+use App\Http\Requests\ApiBookUpdateRequest;
 use App\Models\Book;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -17,14 +19,14 @@ class BookRepository
         return Book::whereId($id)->first();
     }
 
-    public function create(array $params): Book
+    public function create(ApiBookStoreRequest $request): Book
     {
-        return Book::create($params);
+        return Book::create($request->toArray());
     }
 
-    public function update(int $id, array $params): bool
+    public function update(Book $author, ApiBookUpdateRequest $request): bool
     {
-        return Book::whereId($id)->update($params);
+        return $author->update($request->toArray());
     }
 
     public function delete(int $id): int

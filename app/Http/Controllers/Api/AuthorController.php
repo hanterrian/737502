@@ -3,63 +3,39 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ApiAuthorStoreRequest;
+use App\Http\Requests\ApiAuthorUpdateRequest;
 use App\Models\Author;
-use Illuminate\Http\Request;
+use App\Repositories\AuthorRepository;
 
 class AuthorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(private AuthorRepository $authorRepository)
+    {
+    }
+
     public function index()
     {
-        //
+        return $this->authorRepository->all();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(ApiAuthorStoreRequest $request)
     {
-        //
+        return $this->authorRepository->create($request);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Author $author
-     * @return \Illuminate\Http\Response
-     */
     public function show(Author $author)
     {
-        //
+        return $author;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Author $author
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Author $author)
+    public function update(ApiAuthorUpdateRequest $request, Author $author)
     {
-        //
+        return $this->authorRepository->update($author, $request);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\Author $author
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Author $author)
     {
-        //
+        return $author->delete();
     }
 }

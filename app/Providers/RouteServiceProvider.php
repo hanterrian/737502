@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Repositories\AuthorRepository;
+use App\Repositories\BookRepository;
+use App\Repositories\PublisherRepository;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -35,6 +38,24 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+        });
+
+        Route::bind('author', function ($value) {
+            $repository = $this->app->make(AuthorRepository::class);
+
+            return $repository->one($value);
+        });
+
+        Route::bind('publisher', function ($value) {
+            $repository = $this->app->make(PublisherRepository::class);
+
+            return $repository->one($value);
+        });
+
+        Route::bind('book', function ($value) {
+            $repository = $this->app->make(BookRepository::class);
+
+            return $repository->one($value);
         });
     }
 

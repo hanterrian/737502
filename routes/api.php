@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\AuthorController;
+use App\Http\Controllers\Api\BookController;
+use App\Http\Controllers\Api\PublisherController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +23,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResources([
-    'authors' => \App\Http\Controllers\Api\AuthorController::class,
-    'books' => \App\Http\Controllers\Api\BookController::class,
-    'publishers' => \App\Http\Controllers\Api\PublisherController::class,
+    'authors' => AuthorController::class,
+    'books' => BookController::class,
+    'publishers' => PublisherController::class,
 ]);
+
+Route::post('favorite', [UserController::class, 'favorite']);
+Route::post('un-favorite', [UserController::class, 'unFavorite']);

@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use App\Http\Requests\ApiAuthorStoreRequest;
+use App\Http\Requests\ApiAuthorUpdateRequest;
 use App\Models\Author;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
@@ -17,14 +19,14 @@ class AuthorRepository
         return Author::whereId($id)->first();
     }
 
-    public function create(array $params): Author
+    public function create(ApiAuthorStoreRequest $request): Author
     {
-        return Author::create($params);
+        return Author::create($request->toArray());
     }
 
-    public function update(int $id, array $params): bool
+    public function update(Author $author, ApiAuthorUpdateRequest $request): bool
     {
-        return Author::whereId($id)->update($params);
+        return $author->update($request->toArray());
     }
 
     public function delete(int $id): int

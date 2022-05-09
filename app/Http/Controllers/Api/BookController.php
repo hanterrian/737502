@@ -3,63 +3,39 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ApiBookStoreRequest;
+use App\Http\Requests\ApiBookUpdateRequest;
 use App\Models\Book;
-use Illuminate\Http\Request;
+use App\Repositories\BookRepository;
 
 class BookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct(private BookRepository $bookRepository)
+    {
+    }
+
     public function index()
     {
-        //
+        return $this->bookRepository->all();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(ApiBookStoreRequest $request)
     {
-        //
+        return $this->bookRepository->create($request);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Book $book
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Book $book)
+    public function show(Book $author)
     {
-        //
+        return $author;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Book $book
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Book $book)
+    public function update(ApiBookUpdateRequest $request, Book $author)
     {
-        //
+        return $this->bookRepository->update($author, $request);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Models\Book $book
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Book $book)
+    public function destroy(Book $author)
     {
-        //
+        return $author->delete();
     }
 }
