@@ -25,7 +25,7 @@ class BookRepository
         if ($user === null) {
             return;
         }
-        
+
         $book->viewers()->syncWithoutDetaching($user);
 
         $book->viewers()->newPivotQuery()
