@@ -28,5 +28,8 @@ Route::apiResources([
     'publishers' => PublisherController::class,
 ]);
 
-Route::post('favorite', [UserController::class, 'favorite']);
-Route::post('un-favorite', [UserController::class, 'unFavorite']);
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get('profile', [UserController::class, 'profile']);
+    Route::post('favorite', [UserController::class, 'favorite']);
+    Route::post('un-favorite', [UserController::class, 'unFavorite']);
+});

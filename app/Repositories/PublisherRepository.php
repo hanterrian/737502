@@ -11,12 +11,12 @@ class PublisherRepository
 {
     public function all(): LengthAwarePaginator
     {
-        return Publisher::paginate();
+        return Publisher::wherePublished(true)->orderBy('sort')->paginate();
     }
 
     public function one(int $id): ?Publisher
     {
-        return Publisher::whereId($id)->first();
+        return Publisher::whereId($id)->wherePublished(true)->first();
     }
 
     public function create(ApiPublisherStoreRequest $request): Publisher

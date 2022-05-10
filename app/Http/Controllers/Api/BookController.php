@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ApiBookStoreRequest;
 use App\Http\Requests\ApiBookUpdateRequest;
+use App\Http\Resources\BookListCollection;
+use App\Http\Resources\BookViewResource;
 use App\Models\Book;
 use App\Repositories\BookRepository;
 
@@ -16,7 +18,7 @@ class BookController extends Controller
 
     public function index()
     {
-        return $this->bookRepository->all();
+        return new BookListCollection($this->bookRepository->all());
     }
 
     public function store(ApiBookStoreRequest $request)
@@ -26,7 +28,7 @@ class BookController extends Controller
 
     public function show(Book $author)
     {
-        return $author;
+        return new BookViewResource($author);
     }
 
     public function update(ApiBookUpdateRequest $request, Book $author)

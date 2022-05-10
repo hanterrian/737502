@@ -11,12 +11,12 @@ class BookRepository
 {
     public function all(): LengthAwarePaginator
     {
-        return Book::paginate();
+        return Book::wherePublished(true)->orderBy('sort')->paginate();
     }
 
     public function one(int $id): ?Book
     {
-        return Book::whereId($id)->first();
+        return Book::whereId($id)->wherePublished(true)->first();
     }
 
     public function create(ApiBookStoreRequest $request): Book

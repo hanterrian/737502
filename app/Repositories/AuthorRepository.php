@@ -11,12 +11,12 @@ class AuthorRepository
 {
     public function all(): LengthAwarePaginator
     {
-        return Author::paginate();
+        return Author::wherePublished(true)->orderBy('sort')->paginate();
     }
 
     public function one(int $id): ?Author
     {
-        return Author::whereId($id)->first();
+        return Author::whereId($id)->wherePublished(true)->first();
     }
 
     public function create(ApiAuthorStoreRequest $request): Author

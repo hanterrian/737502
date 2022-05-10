@@ -17,7 +17,7 @@ class BookingSeeder extends Seeder
 {
     public function run()
     {
-        File::makeDirectory(storage_path('app/public/books'));
+        File::makeDirectory(storage_path('app/public/books'), 493, true, true);
 
         $list = [
             'А-ба-ба-га-ла-ма-га',
@@ -39,7 +39,7 @@ class BookingSeeder extends Seeder
         $publishers = [];
 
         foreach ($list as $item) {
-            $publishers[] = User::create([
+            $publishers[] = Publisher::create([
                 'name' => $item,
                 'published' => true,
                 'sort' => 0,

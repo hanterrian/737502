@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ApiPublisherStoreRequest;
 use App\Http\Requests\ApiPublisherUpdateRequest;
+use App\Http\Resources\PublisherListCollection;
+use App\Http\Resources\PublisherViewResource;
 use App\Models\Publisher;
 use App\Repositories\PublisherRepository;
 
@@ -16,7 +18,7 @@ class PublisherController extends Controller
 
     public function index()
     {
-        return $this->publisherRepository->all();
+        return new PublisherListCollection($this->publisherRepository->all());
     }
 
     public function store(ApiPublisherStoreRequest $request)
@@ -26,7 +28,7 @@ class PublisherController extends Controller
 
     public function show(Publisher $author)
     {
-        return $author;
+        return new PublisherViewResource($author);
     }
 
     public function update(ApiPublisherUpdateRequest $request, Publisher $author)

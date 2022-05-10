@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ApiAuthorStoreRequest;
 use App\Http\Requests\ApiAuthorUpdateRequest;
+use App\Http\Resources\AuthorListCollection;
+use App\Http\Resources\AuthorViewResource;
 use App\Models\Author;
 use App\Repositories\AuthorRepository;
 
@@ -16,7 +18,7 @@ class AuthorController extends Controller
 
     public function index()
     {
-        return $this->authorRepository->all();
+        return new AuthorListCollection($this->authorRepository->all());
     }
 
     public function store(ApiAuthorStoreRequest $request)
@@ -26,7 +28,7 @@ class AuthorController extends Controller
 
     public function show(Author $author)
     {
-        return $author;
+        return new AuthorViewResource($author);
     }
 
     public function update(ApiAuthorUpdateRequest $request, Author $author)
