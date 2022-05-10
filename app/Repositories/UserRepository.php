@@ -9,12 +9,12 @@ class UserRepository
 {
     public function one(int $id): ?User
     {
-        return User::whereId($id)->first();
+        return User::whereId($id)->with(['favorites', 'viewed'])->first();
     }
 
     public function favorite(User $user, Book $book): void
     {
-        $user->favorites()->attach($book);
+        $user->favorites()->syncWithoutDetaching($book);
     }
 
     public function unFavorite(User $user, Book $book): void

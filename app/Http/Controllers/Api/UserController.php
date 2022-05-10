@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ApiFavoriteRequest;
 use App\Http\Requests\UserLoginRequest;
 use App\Http\Resources\UserProfileResource;
+use App\Models\Book;
 use App\Models\User;
 use App\Repositories\BookRepository;
 use App\Repositories\UserRepository;
@@ -23,7 +24,7 @@ class UserController extends Controller
     {
         $user = User::where('email', $request->email)->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password)) {
+        if (!$user || !Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);
@@ -41,21 +42,21 @@ class UserController extends Controller
 
     public function profile()
     {
-        return new UserProfileResource(Auth::user());
+        $user = $this->userRepository->one(Auth::id());
+
+        return new UserProfileResource($user);
     }
 
-    public function favorite(ApiFavoriteRequest $request)
+    public function favorite(Book $book)
     {
-        $user = $this->userRepository->one($request->user_id);
-        $book = $this->bookRepository->one($request->book_id);
+        $user = Auth::user();
 
         $this->userRepository->favorite($user, $book);
     }
 
-    public function unFavorite(ApiFavoriteRequest $request)
+    public function unFavorite(Book $book)
     {
-        $user = $this->userRepository->one($request->user_id);
-        $book = $this->bookRepository->one($request->book_id);
+        $user = Auth::user();
 
         $this->userRepository->unFavorite($user, $book);
     }

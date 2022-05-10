@@ -9,6 +9,7 @@ use App\Http\Resources\BookListCollection;
 use App\Http\Resources\BookViewResource;
 use App\Models\Book;
 use App\Repositories\BookRepository;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -26,18 +27,20 @@ class BookController extends Controller
         return $this->bookRepository->create($request);
     }
 
-    public function show(Book $author)
+    public function show(Book $book)
     {
-        return new BookViewResource($author);
+        $this->bookRepository->viewed($book, Auth::user());
+
+        return new BookViewResource($book);
     }
 
-    public function update(ApiBookUpdateRequest $request, Book $author)
+    public function update(ApiBookUpdateRequest $request, Book $book)
     {
-        return $this->bookRepository->update($author, $request);
+        return $this->bookRepository->update($book, $request);
     }
 
-    public function destroy(Book $author)
+    public function destroy(Book $book)
     {
-        return $author->delete();
+        return $book->delete();
     }
 }

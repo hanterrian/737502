@@ -90,6 +90,6 @@ class User extends Authenticatable
 
     public function viewed(): BelongsToMany
     {
-        return $this->belongsToMany(Book::class, 'book_user_viewer');
+        return $this->belongsToMany(Book::class, 'book_user_viewer')->withPivot(['view']);
     }
 }
