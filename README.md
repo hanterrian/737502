@@ -13,6 +13,8 @@ http://737502.test
 
 Api auth based on bearer token
 
+[Postman collections](737502.postman_collection.json)
+
 ### Deployment
 
 Used default sail
@@ -24,6 +26,7 @@ composer install
 ```
 
 in hosts add
+
 ```
 127.0.0.1       737502.test
 ```
