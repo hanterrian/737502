@@ -62,7 +62,7 @@ class BookRepository
         $file = $request->file('image');
 
         if ($file) {
-            $fileName = Str::random() . '.' . $file->extension();
+            $fileName = Str::random().'.'.$file->extension();
 
             Storage::disk('public')->putFileAs('books/', $file, $fileName);
 
