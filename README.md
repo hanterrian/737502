@@ -23,6 +23,7 @@ Used default sail
 composer install
 ./vendow/bin/sail up -d
 ./vendor/bin/sail artisan db:seed
+./vendor/bin/sail artisan storage:link
 ```
 
 in hosts add

@@ -17,13 +17,14 @@ class ApiBookStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'publisher_id' => ['required', 'integer', 'exists:App\Models\Publisher,id'],
             'title' => ['required', 'string', 'max:255'],
             'image' => ['image', 'max:2000'],
             'description' => ['string', 'max:5000'],
             'published' => ['boolean'],
             'sort' => ['integer'],
             'authors' => ['required', 'min:1'],
-            'authors.*' => ['required', 'string', 'max:255'],
+            'authors.*' => ['required', 'integer', 'exists:App\Models\Author,id'],
         ];
     }
 

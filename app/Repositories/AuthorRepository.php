@@ -24,9 +24,13 @@ class AuthorRepository
         return Author::create($request->toArray());
     }
 
-    public function update(Author $author, ApiAuthorUpdateRequest $request): bool
+    public function update(Author $author, ApiAuthorUpdateRequest $request): Author
     {
-        return $author->update($request->toArray());
+        $author->update($request->toArray());
+
+        $author->refresh();
+
+        return $author;
     }
 
     public function delete(int $id): int

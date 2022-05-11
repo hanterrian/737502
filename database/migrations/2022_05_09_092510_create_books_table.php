@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Publisher;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +16,7 @@ return new class extends Migration {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignIdFor(\App\Models\Publisher::class);
+            $table->foreignIdFor(Publisher::class)->nullable()->constrained()->nullOnDelete();
 
             $table->string('title')->nullable(false);
             $table->string('image')->nullable(true);

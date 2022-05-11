@@ -24,7 +24,9 @@ class BookController extends Controller
 
     public function store(ApiBookStoreRequest $request)
     {
-        return $this->bookRepository->create($request);
+        $model = $this->bookRepository->create($request);
+
+        return new BookViewResource($model);
     }
 
     public function show(Book $book)
@@ -36,7 +38,9 @@ class BookController extends Controller
 
     public function update(ApiBookUpdateRequest $request, Book $book)
     {
-        return $this->bookRepository->update($book, $request);
+        $model = $this->bookRepository->update($book, $request);
+
+        return new BookViewResource($model);
     }
 
     public function destroy(Book $book)

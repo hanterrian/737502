@@ -24,9 +24,13 @@ class PublisherRepository
         return Publisher::create($request->toArray());
     }
 
-    public function update(Publisher $author, ApiPublisherUpdateRequest $request): bool
+    public function update(Publisher $author, ApiPublisherUpdateRequest $request): Publisher
     {
-        return $author->update($request->toArray());
+        $author->update($request->toArray());
+
+        $author->refresh();
+
+        return $author;
     }
 
     public function delete(int $id): int

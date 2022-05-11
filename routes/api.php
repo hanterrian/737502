@@ -37,7 +37,7 @@ Route::apiResource('publishers', PublisherController::class)
 Route::post('login', [UserController::class, 'login']);
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
-    Route::group(['middleware' => 'can:admin'], function () {
+    Route::group(['middleware' => 'role:admin'], function () {
         Route::apiResource('authors', AuthorController::class)->except(['index', 'show']);
         Route::apiResource('books', BookController::class)->except(['index', 'show']);
         Route::apiResource('publishers', PublisherController::class)->except(['index', 'show']);

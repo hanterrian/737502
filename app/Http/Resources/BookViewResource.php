@@ -22,7 +22,7 @@ class BookViewResource extends JsonResource
 
             'publisher' => PublisherViewResource::make($this->whenLoaded('publisher')),
 
-            'authors' => AuthorListCollection::collection($this->whenLoaded('authors')),
+            'authors' => AuthorListResource::collection($this->whenLoaded('authors')),
         ];
     }
 }

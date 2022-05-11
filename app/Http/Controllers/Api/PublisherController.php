@@ -23,7 +23,9 @@ class PublisherController extends Controller
 
     public function store(ApiPublisherStoreRequest $request)
     {
-        return $this->publisherRepository->create($request);
+        $model = $this->publisherRepository->create($request);
+
+        return new PublisherViewResource($model);
     }
 
     public function show(Publisher $author)
@@ -33,7 +35,9 @@ class PublisherController extends Controller
 
     public function update(ApiPublisherUpdateRequest $request, Publisher $author)
     {
-        return $this->publisherRepository->update($author, $request);
+        $model = $this->publisherRepository->update($author, $request);
+
+        return new PublisherViewResource($model);
     }
 
     public function destroy(Publisher $author)

@@ -15,8 +15,8 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('book_user_favorite', function (Blueprint $table) {
-            $table->foreignIdFor(Book::class);
-            $table->foreignIdFor(User::class);
+            $table->foreignIdFor(Book::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
 
             $table->timestamps();
         });

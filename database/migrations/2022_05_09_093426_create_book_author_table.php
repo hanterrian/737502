@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Author;
+use App\Models\Book;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,8 +15,8 @@ return new class extends Migration {
     public function up()
     {
         Schema::create('book_author', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\Book::class);
-            $table->foreignIdFor(\App\Models\Author::class);
+            $table->foreignIdFor(Book::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Author::class)->constrained()->cascadeOnDelete();
         });
     }
 

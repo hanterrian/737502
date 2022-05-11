@@ -23,7 +23,9 @@ class AuthorController extends Controller
 
     public function store(ApiAuthorStoreRequest $request)
     {
-        return $this->authorRepository->create($request);
+        $model = $this->authorRepository->create($request);
+
+        return new AuthorViewResource($model);
     }
 
     public function show(Author $author)
@@ -33,7 +35,9 @@ class AuthorController extends Controller
 
     public function update(ApiAuthorUpdateRequest $request, Author $author)
     {
-        return $this->authorRepository->update($author, $request);
+        $model = $this->authorRepository->update($author, $request);
+
+        return new AuthorViewResource($model);
     }
 
     public function destroy(Author $author)

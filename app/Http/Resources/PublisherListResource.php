@@ -18,7 +18,7 @@ class PublisherListResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
 
-            'books' => BookListCollection::collection($this->whenLoaded('books')),
+            'books' => BookListResource::collection($this->whenLoaded('books')),
         ];
     }
 }
