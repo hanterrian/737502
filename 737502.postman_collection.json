@@ -24,7 +24,7 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "admin@737502.test",
+									"value": "user@737502.test",
 									"type": "text"
 								},
 								{
@@ -57,7 +57,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "1|qDdrKo3K8hGcrO5dAcTNQDL2e3necc5BO4YyrGVK",
+									"value": "2|Ur7mKyRs5TmXrNFKlIbEMRG7tFROvAgr8PCE54MG",
 									"type": "string"
 								}
 							]
@@ -88,7 +88,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "1|qDdrKo3K8hGcrO5dAcTNQDL2e3necc5BO4YyrGVK",
+									"value": "2|Ur7mKyRs5TmXrNFKlIbEMRG7tFROvAgr8PCE54MG",
 									"type": "string"
 								}
 							]
@@ -124,7 +124,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "1|qDdrKo3K8hGcrO5dAcTNQDL2e3necc5BO4YyrGVK",
+									"value": "2|Ur7mKyRs5TmXrNFKlIbEMRG7tFROvAgr8PCE54MG",
 									"type": "string"
 								}
 							]
@@ -137,6 +137,10 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
 						"url": {
 							"raw": "http://737502.test/api/un-favorite/943",
 							"protocol": "http",
@@ -161,7 +165,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "1|qDdrKo3K8hGcrO5dAcTNQDL2e3necc5BO4YyrGVK",
+									"value": "2|Ur7mKyRs5TmXrNFKlIbEMRG7tFROvAgr8PCE54MG",
 									"type": "string"
 								}
 							]
@@ -298,6 +302,794 @@
 								"api",
 								"books",
 								"943"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Author",
+					"item": [
+						{
+							"name": "List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|AkK5LvdD1r3DZ6bTJXf41ityCsVsf9FepoHv9n14",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://737502.test/api/authors",
+									"protocol": "http",
+									"host": [
+										"737502",
+										"test"
+									],
+									"path": [
+										"api",
+										"authors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "One",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|AkK5LvdD1r3DZ6bTJXf41ityCsVsf9FepoHv9n14",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://737502.test/api/authors/32",
+									"protocol": "http",
+									"host": [
+										"737502",
+										"test"
+									],
+									"path": [
+										"api",
+										"authors",
+										"32"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|AkK5LvdD1r3DZ6bTJXf41ityCsVsf9FepoHv9n14",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Test Author",
+											"type": "text"
+										},
+										{
+											"key": "published",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "sort",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://737502.test/api/authors",
+									"protocol": "http",
+									"host": [
+										"737502",
+										"test"
+									],
+									"path": [
+										"api",
+										"authors"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|AkK5LvdD1r3DZ6bTJXf41ityCsVsf9FepoHv9n14",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Test Author Update",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://737502.test/api/authors/32?_method=PUT",
+									"protocol": "http",
+									"host": [
+										"737502",
+										"test"
+									],
+									"path": [
+										"api",
+										"authors",
+										"32"
+									],
+									"query": [
+										{
+											"key": "_method",
+											"value": "PUT"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|AkK5LvdD1r3DZ6bTJXf41ityCsVsf9FepoHv9n14",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://737502.test/api/authors/31",
+									"protocol": "http",
+									"host": [
+										"737502",
+										"test"
+									],
+									"path": [
+										"api",
+										"authors",
+										"31"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Publisher",
+					"item": [
+						{
+							"name": "List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|AkK5LvdD1r3DZ6bTJXf41ityCsVsf9FepoHv9n14",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://737502.test/api/publishers",
+									"protocol": "http",
+									"host": [
+										"737502",
+										"test"
+									],
+									"path": [
+										"api",
+										"publishers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "One",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|AkK5LvdD1r3DZ6bTJXf41ityCsVsf9FepoHv9n14",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://737502.test/api/publishers/15",
+									"protocol": "http",
+									"host": [
+										"737502",
+										"test"
+									],
+									"path": [
+										"api",
+										"publishers",
+										"15"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|7Z0RFJaf7M9Gitf6wJrLN5R6A6W1faTgpzUPeqT9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Test Publisher",
+											"type": "text"
+										},
+										{
+											"key": "published",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "sort",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://737502.test/api/publishers",
+									"protocol": "http",
+									"host": [
+										"737502",
+										"test"
+									],
+									"path": [
+										"api",
+										"publishers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|AkK5LvdD1r3DZ6bTJXf41ityCsVsf9FepoHv9n14",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Test Publisher Update",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://737502.test/api/publishers/15?_method=PUT",
+									"protocol": "http",
+									"host": [
+										"737502",
+										"test"
+									],
+									"path": [
+										"api",
+										"publishers",
+										"15"
+									],
+									"query": [
+										{
+											"key": "_method",
+											"value": "PUT"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|7Z0RFJaf7M9Gitf6wJrLN5R6A6W1faTgpzUPeqT9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://737502.test/api/publishers/15",
+									"protocol": "http",
+									"host": [
+										"737502",
+										"test"
+									],
+									"path": [
+										"api",
+										"publishers",
+										"15"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Book",
+					"item": [
+						{
+							"name": "List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|AkK5LvdD1r3DZ6bTJXf41ityCsVsf9FepoHv9n14",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://737502.test/api/books",
+									"protocol": "http",
+									"host": [
+										"737502",
+										"test"
+									],
+									"path": [
+										"api",
+										"books"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "One",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|7Z0RFJaf7M9Gitf6wJrLN5R6A6W1faTgpzUPeqT9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://737502.test/api/books/1002",
+									"protocol": "http",
+									"host": [
+										"737502",
+										"test"
+									],
+									"path": [
+										"api",
+										"books",
+										"1002"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|7Z0RFJaf7M9Gitf6wJrLN5R6A6W1faTgpzUPeqT9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "publisher_id",
+											"value": "15",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "Test book",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/hante/Pictures/placeholders/50_50.gif"
+										},
+										{
+											"key": "description",
+											"value": "Test Description",
+											"type": "text"
+										},
+										{
+											"key": "published",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "sort",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "authors[]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "authors[]",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "authors[]",
+											"value": "4",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://737502.test/api/books",
+									"protocol": "http",
+									"host": [
+										"737502",
+										"test"
+									],
+									"path": [
+										"api",
+										"books"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|AkK5LvdD1r3DZ6bTJXf41ityCsVsf9FepoHv9n14",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "publisher_id",
+											"value": "17",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "Test book",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Test Description",
+											"type": "text"
+										},
+										{
+											"key": "published",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "sort",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "authors[]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "authors[]",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "authors[]",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/C:/Users/hante/Pictures/placeholders/50_50.gif"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://737502.test/api/books/1004?_method=PUT",
+									"protocol": "http",
+									"host": [
+										"737502",
+										"test"
+									],
+									"path": [
+										"api",
+										"books",
+										"1004"
+									],
+									"query": [
+										{
+											"key": "_method",
+											"value": "PUT"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|7Z0RFJaf7M9Gitf6wJrLN5R6A6W1faTgpzUPeqT9",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://737502.test/api/books/1002",
+									"protocol": "http",
+									"host": [
+										"737502",
+										"test"
+									],
+									"path": [
+										"api",
+										"books",
+										"1002"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "http://737502.test/api/login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@737502.test",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://737502.test/api/login",
+							"protocol": "http",
+							"host": [
+								"737502",
+								"test"
+							],
+							"path": [
+								"api",
+								"login"
 							]
 						}
 					},
